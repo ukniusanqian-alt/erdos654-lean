@@ -1,4 +1,6 @@
-import Mathlib
+module
+
+public import Mathlib
 
 /-!
 # Erdős Problem 654: Lean 4 formalization of the Aletheia counterexample
@@ -22,7 +24,7 @@ values gives `3^a = 2^b` with `b ≥ 2`, impossible by parity.  Every point sees
 open Finset EuclideanGeometry
 open scoped Classical
 
-noncomputable section
+@[expose] public noncomputable section
 
 namespace Erdos654Proof
 

@@ -1,0 +1,97 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős Problem 654: the Aletheia counterexample"
+  description: >-
+    Lean 4 / Mathlib proof that Erdős Problem 654 has a negative answer: for every m ≥ 10 there
+    is a set of n = 4m points in the Euclidean plane, no four on a circle, in which every point
+    has fewer than 3n/4 distinct distances to the other points. Consequently it is false that
+    every n-point planar set with no four concyclic points has a point with (1 - o(1))n distinct
+    distances. The construction (Aletheia; Feng et al., arXiv:2601.22401) places the points
+    (0, ±3^(k+1)) and (±2^(j+1), 0) on the two coordinate axes.
+  authors:
+    - "ukniusanqian-alt"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "ukniusanqian-alt"
+
+classification:
+  arxiv: ["math.CO", "math.MG"]
+  msc2020: ["52C10"]
+
+sources:
+  - title: "Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on the Erdős Problems"
+    authors:
+      - "T. Feng et al."
+    id: "arXiv:2601.22401"
+    type: "paper"
+    location: "https://arxiv.org/abs/2601.22401, Section 3.1, Theorem 3 and Lemma 3"
+    relationship: "formalizes"
+    note: "The counterexample in Section 3.1 (attributed to the Aletheia system) is formalized with the exponent range shifted from {10, …, m+9} to {1, …, m}; the argument is unchanged."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Erdős Problem #654"
+    contributors:
+      - name: "Paul Erdős"
+        role: "problem-proposer"
+    id: "https://www.erdosproblems.com/654"
+    type: "web post"
+    location: "https://www.erdosproblems.com/654"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "n/a"
+
+related_formalizations:
+  - id: "https://github.com/google-deepmind/formal-conjectures/blob/feacabbcf6ed2e7b622663c3e1c0f61038183392/FormalConjectures/ErdosProblems/654.lean"
+    relationship: "other"
+    note: "Source of the formal statements erdos_654.parts.i and erdos_654.variants.feng and of the definitions NoFourConcyclic and distinctDistancesFrom, reproduced verbatim (Apache-2.0); that file states them with sorry and contains no proof."
+
+status:
+  scope: >-
+    Fully formalizes the negative answer to the first question of Erdős Problem 654
+    (erdos_654.parts.i) and the explicit Aletheia construction (erdos_654.variants.feng). The
+    second question (whether some point always has (1/3 + c)n distinct distances, with or without
+    general position) is not addressed.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Claude Fable 5.1 (claude-fable-5-1)"]
+      framework: "Claude Code"
+      tool_setup: "An AI agent wrote the Lean source, compiled it with lake against pinned Mathlib, and iterated on compiler errors; the human directed the work."
+      cost:
+        wall_time: "about 1 hour"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+      prompting_notes: "The agent was asked to find an Erdős problem with a published solution and no Lean proof and to formalize it; it selected Problem 654 and followed arXiv:2601.22401 Section 3.1."
+  spend_usd: "subscription-based"
+  notes: "Proof text written by an AI agent (Claude) under the direction of the repository owner; statements were taken verbatim from google-deepmind/formal-conjectures rather than written by the agent."
+
+fidelity:
+  divergences: "The point set uses exponents 1..m instead of the paper's 10..m+9; the theorem statements are identical to those in google-deepmind/formal-conjectures."
+
+review:
+  status: "self-assessed"
+  reviewers:
+    - "none"
+  notes: "Statements compared token-by-token with formal-conjectures 654.lean; lake build passes with no sorry in the proof development; #print axioms reports only propext, Classical.choice and Quot.sound. No independent human mathematical review."
+
+alignment:
+  namespace: "Erdos654"
+  statements:
+    - source: "arXiv:2601.22401, Section 3.1, Theorem 3"
+      lean: "Erdos654.erdos_654.variants.feng"
+      module: "Challenge"
+      status: "proved"
+      note: "Existence, for every m ≥ 10, of 4m points with no four concyclic and fewer than 3m distinct distances from every point."
+    - source: "Erdős Problem 654, first question"
+      lean: "Erdos654.erdos_654.parts.i"
+      module: "Challenge"
+      status: "proved"
+      note: "Negation of: for every ε > 0, eventually every n-point set with no four concyclic has a point with more than (1 - ε)n distinct distances."
+
+acknowledgements: "Mathlib; google-deepmind/formal-conjectures for the statements; the Palomar template."

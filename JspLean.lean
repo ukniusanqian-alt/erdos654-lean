@@ -1,2 +1,3 @@
-import JspLean.Basic
-import JspLean.Erdos654
+module
+
+public import JspLean.Erdos654

@@ -1,0 +1,8 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": ["Erdos654.erdos_654.variants.feng", "Erdos654.erdos_654.parts.i"],
+  "definition_names": ["Erdos654.NoFourConcyclic", "Erdos654.distinctDistancesFrom"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": true
+}

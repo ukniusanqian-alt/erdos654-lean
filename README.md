@@ -16,8 +16,8 @@ in the exact statements used by
 
 | formal-conjectures theorem | this repository | file |
 | --- | --- | --- |
-| `Erdos654.erdos_654.variants.feng` | `Erdos654Proof.feng` | `JspLean/Erdos654.lean` |
-| `Erdos654.erdos_654.parts.i` | `Erdos654Proof.parts_i` | `JspLean/Erdos654.lean` |
+| `Erdos654.erdos_654.variants.feng` | `Erdos654Proof.feng` (restated as `Erdos654.erdos_654.variants.feng` in `Solution.lean`) | `JspLean/Erdos654.lean` |
+| `Erdos654.erdos_654.parts.i` | `Erdos654Proof.parts_i` (restated as `Erdos654.erdos_654.parts.i` in `Solution.lean`) | `JspLean/Erdos654.lean` |
 
 The definitions `NoFourConcyclic` (∀ T ⊆ X, T.ncard = 4 → ¬Cospherical T) and
 `distinctDistancesFrom` (#((points.erase pt).image (dist · pt))) are copied verbatim from
@@ -40,6 +40,10 @@ changes nothing in the argument).
   its own axis and at most `m` to the other axis, because `(±2^(j+1), 0)` are equidistant from
   every point of the y-axis (`card_image_dist_xPts_le`, `dd_le`, `dd_lt`).
 * `parts_i` follows from `feng` with `ε = 1/8`.
+
+## Layout (Palomar format)
+
+`Challenge.lean` is the small auditable statement (imports only Mathlib, deliberate `sorry`); `Solution.lean` restates it verbatim and closes it with the library proof; `comparator.json` lists the compared theorems and definitions; `formalization.yaml` records sources, authorship and AI use.
 
 ## Reproduction
 
