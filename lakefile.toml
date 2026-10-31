@@ -1,7 +1,7 @@
 name = "JspLean"
 version = "0.1.0"
 keywords = ["math"]
-defaultTargets = ["JspLean", "Challenge", "Solution"]
+defaultTargets = ["JspLean", "Challenge", "Solution", "Challenge1033", "Solution1033"]
 
 [leanOptions]
 pp.unicode.fun = true # pretty-prints `fun a ↦ b`
@@ -24,3 +24,11 @@ roots = ["Challenge"]
 [[lean_lib]]
 name = "Solution"
 roots = ["Solution"]
+
+[[lean_lib]]
+name = "Challenge1033"
+roots = ["Challenge1033"]
+
+[[lean_lib]]
+name = "Solution1033"
+roots = ["Solution1033"]

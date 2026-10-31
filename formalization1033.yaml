@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős Problem 1033: a butterfly blow-up beating 2(√3 - 1)"
+  description: >-
+    Lean 4 / Mathlib proof that the Bollobás–Erdős question of Erdős Problem 1033 has a negative
+    answer. For every t ≥ 1 an explicit blow-up of the butterfly graph (two triangles sharing a
+    vertex) on n = 668t vertices has 111561t² > n²/4 edges, and every triangle has degree sum
+    exactly 978t, while 978/668 < 2(√3 - 1). Hence it is false that every graph on n vertices
+    with more than n²/4 edges has a triangle with degree sum at least (2(√3 - 1) - o(1))n.
+  authors:
+    - "ukniusanqian-alt"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "ukniusanqian-alt"
+
+classification:
+  arxiv: ["math.CO"]
+  msc2020: ["05C35"]
+
+sources:
+  - title: "Optimized density argument for Erdős 1033"
+    authors:
+      - "Wouter CvB"
+    id: "https://woutercvb.github.io/Erdos1033_smalloptimization.pdf"
+    type: "note"
+    location: "https://woutercvb.github.io/Erdos1033_smalloptimization.pdf (July 27, 2026), Lemma 1"
+    relationship: "adapts"
+    note: "The note blows up the butterfly graph with real densities and random bipartite subgraphs (constant 1.463878). This formalization uses the same graph with integer part sizes (a = 6c) and explicit circulant bipartite rules, giving constant 978/668 = 1.46407…, still below 2(√3 - 1) = 1.46410…."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Erdős Problem #1033 and its forum thread"
+    contributors:
+      - name: "Béla Bollobás"
+        role: "problem-proposer"
+      - name: "Paul Erdős"
+        role: "problem-proposer"
+      - name: "Rickyc"
+        role: "first butterfly blow-up construction (forum, with ChatGPT)"
+    id: "https://www.erdosproblems.com/1033"
+    type: "web post"
+    location: "https://www.erdosproblems.com/forum/thread/1033"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "n/a"
+
+related_formalizations:
+  - id: "https://github.com/google-deepmind/formal-conjectures/blob/feacabbcf6ed2e7b622663c3e1c0f61038183392/FormalConjectures/ErdosProblems/1033.lean"
+    relationship: "other"
+    note: "Source of the formal statement erdos_1033, reproduced verbatim (Apache-2.0); that file states it with sorry and contains no proof."
+
+status:
+  scope: >-
+    Fully formalizes the negative answer to the main question of Erdős Problem 1033 (statement
+    erdos_1033 of formal-conjectures). The optimal value of h(n), and the other variants in that
+    file (Fan's lower bound 21n/16, the Erdős–Laskar construction), are not addressed.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Claude Fable 5.1 (claude-fable-5-1)", "Claude Opus 5.5 (claude-opus-5-5)"]
+      framework: "Claude Code"
+      tool_setup: "An AI agent chose integer parameters by numerical search, wrote the Lean source, compiled it with lake against pinned Mathlib and iterated on compiler errors; the human directed the work."
+      cost:
+        wall_time: "about 1 hour"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+      prompting_notes: "The agent was asked to formalize every feasible solved Erdős problem it had identified; it read the CvB note and replaced the random subgraphs by circulant ones."
+  spend_usd: "subscription-based"
+  notes: "Proof and parameter choice by an AI agent (Claude) under the direction of the repository owner; the statement was taken verbatim from google-deepmind/formal-conjectures."
+
+fidelity:
+  divergences: "Integer parameters and circulant bipartite rules replace the note's real densities and random subgraphs; the resulting constant is 978/668 instead of 1.463878. The theorem statement is identical to formal-conjectures."
+
+review:
+  status: "self-assessed"
+  reviewers:
+    - "none"
+  notes: "Statement compared verbatim with formal-conjectures 1033.lean; lake build passes with no sorry; #print axioms reports only propext, Classical.choice and Quot.sound. No independent human review."
+
+alignment:
+  namespace: "Erdos1033"
+  statements:
+    - source: "Erdős Problem 1033, main question"
+      lean: "Erdos1033.erdos_1033"
+      module: "Challenge1033"
+      status: "proved"
+      note: "Negation of: for every ε > 0, eventually every graph on n vertices with more than n²/4 edges has a triangle with degree sum at least (2(√3 - 1) - ε)n."
+
+acknowledgements: "Mathlib; google-deepmind/formal-conjectures for the statement; the erdosproblems.com forum and W. CvB's note for the construction."

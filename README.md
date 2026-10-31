@@ -71,3 +71,25 @@ Axiom audit (append to the file or run in a scratch file importing it):
 Mathematical solution: Aletheia / T. Feng et al. [arXiv:2601.22401](https://arxiv.org/abs/2601.22401) §3.1.
 Lean formalization: written by Claude (Anthropic, Fable 5.1) directed by the repository owner,
 2026-10-31. Statement definitions: google-deepmind/formal-conjectures (Apache-2.0).
+
+---
+
+# Erdős Problem 1033 — butterfly blow-up (also in this repository)
+
+**Problem.** [erdosproblems.com/1033](https://www.erdosproblems.com/1033) (Bollobás–Erdős): is
+`h(n) ≥ (2(√3 - 1) - o(1)) n`, where `h(n)` is the largest degree sum of a triangle guaranteed in
+every `n`-vertex graph with more than `n²/4` edges? **Answer: no.**
+
+`JspLean/Erdos1033.lean` proves `Erdos1033Proof.erdos_1033`, restated verbatim as
+`Erdos1033.erdos_1033` (statement of
+[formal-conjectures 1033.lean](https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/1033.lean))
+in `Challenge1033.lean` / `Solution1033.lean`; Comparator config `comparator1033.json`, metadata
+`formalization1033.yaml`.
+
+Construction, for every `t ≥ 1`: parts `a = Fin 6 × Fin 48t`, `b = Fin 170t`, `c = Fin 48t`,
+`d = e = Fin 81t`; all edges `a–b, b–c, a–d, a–e`; `(r,i) ∈ a ~ j ∈ c` iff `(i + j) mod 48t < 20t`;
+`i ∈ d ~ j ∈ e` iff `(i + j) mod 81t < 25t`. Then `n = 668t`, degrees are `352t, 336t, 290t, 313t, 313t`,
+`|E| = 111561 t² > n²/4`, and every triangle (type `abc` or `ade`) has degree sum `978t`, with
+`978/668 = 1.46407… < 2(√3 - 1) = 1.46410…`. This adapts the butterfly blow-up of Rickyc/ChatGPT on
+the erdosproblems.com forum and W. CvB's optimized note, replacing random subgraphs by circulant ones.
+Axioms: `propext, Classical.choice, Quot.sound`.
