@@ -84,7 +84,7 @@ every `n`-vertex graph with more than `n²/4` edges? **Answer: no.**
 `Erdos1033.erdos_1033` (statement of
 [formal-conjectures 1033.lean](https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/1033.lean))
 in `Challenge1033.lean` / `Solution1033.lean`; Comparator config `comparator1033.json`, metadata
-`formalization1033.yaml`.
+`meta1033/formalization.yaml`.
 
 Construction, for every `t ≥ 1`: parts `a = Fin 6 × Fin 48t`, `b = Fin 170t`, `c = Fin 48t`,
 `d = e = Fin 81t`; all edges `a–b, b–c, a–d, a–e`; `(r,i) ∈ a ~ j ∈ c` iff `(i + j) mod 48t < 20t`;

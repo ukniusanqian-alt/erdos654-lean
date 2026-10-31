@@ -28,4 +28,4 @@ jobs:
       request_id: erdos1033pre
       mode: full
       execution_profile: palomar-standard-v1
-      options: '{"comparator_config_path":"comparator1033.json","formalization_metadata_path":"formalization1033.yaml","authorization_relationship":"I am a responsible author or maintainer"}'
+      options: '{"comparator_config_path":"comparator1033.json","formalization_metadata_path":"meta1033/formalization.yaml","authorization_relationship":"I am a responsible author or maintainer"}'
