@@ -1,6 +1,9 @@
 module
 
-public import Mathlib
+public import Mathlib.Geometry.Euclidean.Sphere.Basic
+public import Mathlib.Analysis.InnerProductSpace.PiL2
+public import Mathlib.Data.Set.Card
+public import Mathlib.Order.Filter.AtTopBot.Basic
 
 /-!
 # Challenge: Erdős Problem 654 (no four concyclic, many distinct distances) is false

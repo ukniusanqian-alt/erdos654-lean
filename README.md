@@ -47,8 +47,8 @@ changes nothing in the argument).
 
 ## Reproduction
 
-Toolchain `leanprover/lean4:v4.36.0-rc2` (`lean-toolchain`); Mathlib pinned in `lake-manifest.json`
-to `9d581dfff2e41de989072ea63abf3daf69311520` (tag `v4.36.0-rc2`).
+Toolchain `leanprover/lean4:v4.35.0` (`lean-toolchain`); Mathlib pinned in `lake-manifest.json`
+to `56a005855ea17e0b0958f73ec801ae140b0a1679` (tag `v4.35.0`).
 
 ```sh
 lake exe cache get          # Mathlib oleans

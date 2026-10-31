@@ -1,6 +1,9 @@
 module
 
-public import Mathlib
+public import Mathlib.Combinatorics.SimpleGraph.Clique
+public import Mathlib.Combinatorics.SimpleGraph.Finite
+public import Mathlib.Analysis.Real.Sqrt
+public import Mathlib.Order.Filter.AtTopBot.Basic
 
 /-!
 # Challenge: Erdős Problem 1033 (Bollobás–Erdős triangle degree sums) is false
